@@ -26,7 +26,6 @@ class _AddExpensePageState extends State<AddExpensePage> {
       'icon': 'assets/icon/Groceries.svg',
       'label': 'Groceries',
       'color': const Color(0xFFDEEEFF),
-      // 'size': 30.0, // <-- CONTOH UKURAN CUSTOM: Groceries lebih besar
     },
     {
       'icon': 'assets/icon/entertainment.svg',
@@ -55,7 +54,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
       'icon': 'assets/icon/Fitnes.svg',
       'label': 'Fitness',
       'color': const Color(0xFF87DCD7),
-      'size': 30.0, // <-- CONTOH UKURAN CUSTOM: Fitness lebih kecil
+      'size': 30.0, 
     },
     {
       'icon': 'assets/icon/Insurance.svg',
@@ -70,7 +69,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
     },
   ];
 
-  // Helper method untuk styling input field
+  
   InputDecoration _buildInputDecoration({
     String? hintText,
     Widget? suffixIcon,
@@ -247,12 +246,10 @@ class _AddExpensePageState extends State<AddExpensePage> {
                             itemCount: categoryGridItems.length,
                             itemBuilder: (context, index) {
                               final item = categoryGridItems[index];
-                              // LANGKAH 4: Oper 'size' ke method. Beri nilai default jika tidak ada.
                               return _buildCategoryGridItem(
                                 item['icon'],
                                 item['label'],
                                 item['color'],
-                                // Lakukan konversi tipe data secara manual
                                 iconSize:
                                     (item['size'] as num?)?.toDouble() ?? 28.0,
                               );
@@ -307,7 +304,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
     );
   }
 
-  // LANGKAH 2: Tambahkan parameter opsional {double iconSize = 28.0}
+  
   Widget _buildCategoryGridItem(
     dynamic icon,
     String label,
@@ -317,14 +314,14 @@ class _AddExpensePageState extends State<AddExpensePage> {
     Widget iconWidget;
     if (icon is String) {
       final iconPath = icon.endsWith('.svg') ? icon : '$icon.svg';
-      // LANGKAH 3: Gunakan variabel iconSize
+      
       iconWidget = SvgPicture.asset(
         iconPath,
         width: iconSize,
         height: iconSize,
       );
     } else if (icon is IconData) {
-      // LANGKAH 3: Gunakan variabel iconSize
+      
       iconWidget = Icon(icon, color: Colors.white, size: iconSize);
     } else {
       iconWidget = const SizedBox.shrink();
