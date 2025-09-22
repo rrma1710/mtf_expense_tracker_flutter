@@ -14,8 +14,6 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(child: Text("Halaman Dashboard")),
-      );
+    return Scaffold(body: Center(child: Text("Pendaftaran")));
   }
 }
