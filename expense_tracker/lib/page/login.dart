@@ -1,3 +1,4 @@
+import 'package:coba/page/balance_page.dart';
 import 'package:coba/page/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -123,7 +124,14 @@ class _MyAppState extends State<LoginPage> {
                     Container(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FinanceHomePage(),
+                            ),
+                          );
+                        },
                         child: Text(
                           "Login",
                           style: TextStyle(color: Colors.white),

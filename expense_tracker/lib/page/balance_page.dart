@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
 // --- BARU: Model untuk data transaksi agar lebih rapi ---
 class Transaction {
   final IconData icon;
@@ -23,25 +19,6 @@ class Transaction {
     required this.iconColor,
   });
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Finance App UI',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
-      // --- DIUBAH: Menjadi StatefulWidget ---
-      home: const FinanceHomePage(),
-    );
-  }
-}
-
 // --- DIUBAH: Dari StatelessWidget menjadi StatefulWidget ---
 class FinanceHomePage extends StatefulWidget {
   const FinanceHomePage({super.key});
