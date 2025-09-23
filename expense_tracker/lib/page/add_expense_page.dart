@@ -23,9 +23,10 @@ class _AddExpensePageState extends State<AddExpensePage> {
   // Data untuk grid kategori
   final List<Map<String, dynamic>> categoryGridItems = [
     {
-      'icon': 'assets/icon/Groceries.svg',
+      'icon': Icons.shopping_cart,
       'label': 'Groceries',
       'color': const Color(0xFFDEEEFF),
+      'iconColor': Colors.blue.shade700,
     },
     {
       'icon': 'assets/icon/entertainment.svg',
@@ -54,7 +55,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
       'icon': 'assets/icon/Fitnes.svg',
       'label': 'Fitness',
       'color': const Color(0xFF87DCD7),
-      'size': 30.0, 
+      'size': 30.0,
     },
     {
       'icon': 'assets/icon/Insurance.svg',
@@ -66,10 +67,10 @@ class _AddExpensePageState extends State<AddExpensePage> {
       'label': 'Other',
       'color': const Color(0xFF538582),
       'size': 30.0,
+      // Tidak ada iconColor, akan pakai warna default (putih)
     },
   ];
 
-  
   InputDecoration _buildInputDecoration({
     String? hintText,
     Widget? suffixIcon,
@@ -252,6 +253,8 @@ class _AddExpensePageState extends State<AddExpensePage> {
                                 item['color'],
                                 iconSize:
                                     (item['size'] as num?)?.toDouble() ?? 28.0,
+                                iconColor:
+                                    item['iconColor'], // <-- DIUBAH: Mengirim data iconColor
                               );
                             },
                           ),
@@ -304,25 +307,31 @@ class _AddExpensePageState extends State<AddExpensePage> {
     );
   }
 
-  
+  // DIUBAH: Menerima parameter iconColor
   Widget _buildCategoryGridItem(
     dynamic icon,
     String label,
     Color color, {
     double iconSize = 28.0,
+    Color? iconColor,
   }) {
     Widget iconWidget;
     if (icon is String) {
       final iconPath = icon.endsWith('.svg') ? icon : '$icon.svg';
-      
+
       iconWidget = SvgPicture.asset(
         iconPath,
         width: iconSize,
         height: iconSize,
       );
     } else if (icon is IconData) {
-      
-      iconWidget = Icon(icon, color: Colors.white, size: iconSize);
+      // DIUBAH: Menggunakan warna dari parameter
+      iconWidget = Icon(
+        icon,
+        // Jika iconColor tidak ada, maka pakai warna putih sebagai default
+        color: iconColor ?? Colors.white,
+        size: iconSize,
+      );
     } else {
       iconWidget = const SizedBox.shrink();
     }
