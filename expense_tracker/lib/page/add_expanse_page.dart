@@ -23,7 +23,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
   // Data untuk grid kategori
   final List<Map<String, dynamic>> categoryGridItems = [
     {
-      'icon': 'assets/icon/groceries.svg',
+      'icon': 'assets/icon/keranjang.svg',
       'label': 'Groceries',
       'color': const Color(0xFFDEEEFF),
       'iconColor': Colors.blue.shade700,
