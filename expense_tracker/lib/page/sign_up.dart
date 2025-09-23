@@ -16,7 +16,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  final _googleFont = GoogleFonts.poppins;
+
 
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
