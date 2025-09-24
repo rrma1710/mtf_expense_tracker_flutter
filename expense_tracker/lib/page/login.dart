@@ -68,6 +68,7 @@ class _MyAppState extends State<LoginPage> {
                     TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hint: Text("Enter Your Name"),
@@ -88,6 +89,7 @@ class _MyAppState extends State<LoginPage> {
 
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         suffixIcon: IconButton(
@@ -164,7 +166,7 @@ class _MyAppState extends State<LoginPage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 46),
+                    SizedBox(height: 30),
                     Container(
                       height: 60,
                       width: double.infinity,
@@ -252,12 +254,11 @@ class _MyAppState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 5),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Didn't have an account?"),
-                        SizedBox(width: 5),
                         TextButton(
                           onPressed: () {
                             Navigator.push(

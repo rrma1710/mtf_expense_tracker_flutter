@@ -1,3 +1,4 @@
+import 'package:coba/page/add_expanse_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,6 +20,7 @@ class Transaction {
     required this.iconColor,
   });
 }
+
 // --- DIUBAH: Dari StatelessWidget menjadi StatefulWidget ---
 class FinanceHomePage extends StatefulWidget {
   const FinanceHomePage({super.key});
@@ -89,7 +91,13 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            // ← Sekarang akan bekerja
+            context,
+            MaterialPageRoute(builder: (context) => AddExpensePage()),
+          );
+        },
         backgroundColor: const Color(0xFF2C7873),
         child: const Icon(Icons.add_circle, color: Colors.white),
         elevation: 2.0,
@@ -145,20 +153,25 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
                   const CircleAvatar(
                     radius: 25,
                     backgroundImage: NetworkImage(
-                        'https://i.pravatar.cc/150?img=32'),
+                      'https://i.pravatar.cc/150?img=32',
+                    ),
                   ),
                   const SizedBox(width: 15),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Welcome!',
-                          style:
-                          TextStyle(color: Colors.white70, fontSize: 14)),
-                      Text('Shibab Rahman',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold)),
+                      Text(
+                        'Welcome!',
+                        style: TextStyle(color: Colors.white70, fontSize: 14),
+                      ),
+                      Text(
+                        'Shibab Rahman',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                   const Spacer(),
@@ -169,7 +182,7 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(Icons.notifications, color: Colors.white),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -188,31 +201,44 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
                     color: Colors.black.withOpacity(0.1),
                     blurRadius: 10,
                     offset: const Offset(0, 5),
-                  )
+                  ),
                 ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Balance',
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.8), fontSize: 16)),
+                  Text(
+                    'Balance',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.8),
+                      fontSize: 16,
+                    ),
+                  ),
                   const SizedBox(height: 5),
-                  const Text('\$ 2,548.00',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold)),
+                  const Text(
+                    '\$ 2,548.00',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _buildIncomeExpense(
-                          'Income', '\$ 15,274.00', Icons.arrow_downward),
+                        'Income',
+                        '\$ 15,274.00',
+                        Icons.arrow_downward,
+                      ),
                       _buildIncomeExpense(
-                          'Expenses', '\$ 2,436.00', Icons.arrow_upward),
+                        'Expenses',
+                        '\$ 2,436.00',
+                        Icons.arrow_upward,
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
@@ -231,16 +257,23 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title,
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.8), fontSize: 14)),
-            Text(amount,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600)),
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.8),
+                fontSize: 14,
+              ),
+            ),
+            Text(
+              amount,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
-        )
+        ),
       ],
     );
   }
@@ -248,8 +281,9 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
   // --- DIUBAH: Widget ini sekarang membangun list secara dinamis ---
   Widget _buildRecentTransactions() {
     // Menentukan list mana yang akan ditampilkan berdasarkan state _showAll
-    final transactionsToShow =
-    _showAll ? _transactions : _transactions.sublist(0, 1);
+    final transactionsToShow = _showAll
+        ? _transactions
+        : _transactions.sublist(0, 1);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -259,18 +293,23 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Recent Transactions',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                'Recent Transactions',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               // --- DIUBAH: Menjadi TextButton ---
               TextButton(
                 onPressed: () {
                   // Memanggil setState untuk memberitahu Flutter agar membangun ulang UI
                   setState(() {
-                    _showAll = !_showAll; // Toggle nilainya (true -> false, false -> true)
+                    _showAll =
+                        !_showAll; // Toggle nilainya (true -> false, false -> true)
                   });
                 },
                 child: Text(
-                  _showAll ? 'See Less' : 'See All', // Teks berubah sesuai state
+                  _showAll
+                      ? 'See Less'
+                      : 'See All', // Teks berubah sesuai state
                   style: TextStyle(color: Colors.grey[600]),
                 ),
               ),
@@ -294,8 +333,14 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
   }
 
   // Widget untuk setiap item transaksi (tidak ada perubahan di sini)
-  Widget _buildTransactionItem(IconData icon, String title, String subtitle,
-      String amount, Color backgroundColor, Color iconColor) {
+  Widget _buildTransactionItem(
+    IconData icon,
+    String title,
+    String subtitle,
+    String amount,
+    Color backgroundColor,
+    Color iconColor,
+  ) {
     // ... (kode ini tetap sama)
     return Container(
       margin: const EdgeInsets.only(bottom: 15),
@@ -308,7 +353,7 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
             color: Colors.grey.withOpacity(0.08),
             blurRadius: 10,
             offset: const Offset(0, 4),
-          )
+          ),
         ],
       ),
       child: Row(
@@ -326,19 +371,28 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold)),
-                Text(subtitle,
-                    style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  subtitle,
+                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                ),
               ],
             ),
           ),
-          Text(amount,
-              style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red)),
+          Text(
+            amount,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.red,
+            ),
+          ),
         ],
       ),
     );
