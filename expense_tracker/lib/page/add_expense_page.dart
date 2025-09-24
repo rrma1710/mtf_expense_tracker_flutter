@@ -152,7 +152,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
                     TextFormField(
                       keyboardType: TextInputType.number,
                       decoration: _buildInputDecoration(
-                        hintText: '0.00',
+                        hintText: '\Rp 0.00',
                         prefixText: 'Rp ',
                       ),
                     ),
