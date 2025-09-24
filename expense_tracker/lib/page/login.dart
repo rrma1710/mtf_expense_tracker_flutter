@@ -1,4 +1,4 @@
-import 'package:coba/page/balance_page.dart';
+import 'package:coba/page/dashboard.dart';
 import 'package:coba/page/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
