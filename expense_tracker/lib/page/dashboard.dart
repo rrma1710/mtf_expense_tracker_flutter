@@ -1,3 +1,4 @@
+import 'package:coba/page/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:coba/page/add_expanse_page.dart';
@@ -144,7 +145,7 @@ class _FinanceHomePageState extends State<FinanceHomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const show_chart()), // Replace AddExpensePage() with the widget for the screen you want to open
+                    MaterialPageRoute(builder: (context) => const ChartPage()), // Replace AddExpensePage() with the widget for the screen you want to open
                   );
                 },
               ),
