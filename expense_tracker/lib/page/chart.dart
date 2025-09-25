@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-
 class ChartPage extends StatelessWidget {
   const ChartPage({super.key});
 
@@ -36,13 +35,13 @@ class ChartPage extends StatelessWidget {
           children: const [
             Icon(Icons.home, color: Colors.grey),
             Icon(Icons.bar_chart, color: Colors.grey),
-            ],
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: const Color.fromARGB(255, 58, 124, 60),
-        child: const Icon(Icons.add, size: 32,color: Colors.white,),
+        child: const Icon(Icons.add, size: 32, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -53,21 +52,49 @@ class ChartPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
+          width: 200,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           decoration: BoxDecoration(
-            color: const Color(0xFF8BA28D),
-            borderRadius: BorderRadius.circular(20),
+            color: const Color(0xFF214946),
+            borderRadius: BorderRadius.circular(10),
           ),
-          child: const Text(
-            'September 2025',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          child: Center(
+            child: const Text(
+              'September 2025',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ),
         Row(
           children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.play_arrow)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.play_arrow)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.stop)),
+            IconButton(
+              onPressed: () {},
+              icon: Transform.scale(
+                scaleX: -1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  padding: EdgeInsets.all(10),
+                  child: const Icon(Icons.play_arrow),
+                ),
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                padding: EdgeInsets.all(10),
+                child: const Icon(Icons.play_arrow),
+              ),
+            ),
             IconButton(
               onPressed: () {},
               icon: const Icon(Icons.calendar_today),
